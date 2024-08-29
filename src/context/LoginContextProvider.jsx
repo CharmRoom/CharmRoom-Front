@@ -52,10 +52,12 @@ function LoginContextProvider({ children }) {
             if (response.status === HttpStatusCode.Ok){
                 const accessToken = response.headers.authorization.replace("Bearer ", "");
                 localStorage.setItem("access", accessToken);
+                console.log(accessToken);
             }
         } catch(e){
-            
+            return false;
         }
+        return true;
     }
 
     const logout = async () => {
@@ -106,6 +108,7 @@ function LoginContextProvider({ children }) {
         <LoginContext.Provider value = { {isLogin, userInfo, login, logout } }>
             {children}
         </LoginContext.Provider>
+        
     );
 }
 
