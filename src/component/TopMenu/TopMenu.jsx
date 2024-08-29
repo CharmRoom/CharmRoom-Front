@@ -3,6 +3,8 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../../context/LoginContextProvider";
 
+import Logo from "../../resources/image/logo.svg"
+
 function TopMenu() {
 
     const { isLogin, logout } = useContext(LoginContext);
@@ -10,7 +12,10 @@ function TopMenu() {
     return (
         <Navbar style={{ backgroundColor: "#CDE3FC" }} sticky="top" expand="lg">
             <Container>
-                <Navbar.Brand as={Link} to="/">참방</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">
+                    <img src={Logo} alt="참방"/>
+                </Navbar.Brand>
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -23,7 +28,7 @@ function TopMenu() {
                     {
                         isLogin ?
                             <Nav>
-                                <Nav.Link>마이페이지</Nav.Link>
+                                <Nav.Link as={Link} to={"/mypage"}>마이페이지</Nav.Link>
                                 <Nav.Link onClick={logout}>로그아웃</Nav.Link>
                             </Nav>
                             :
