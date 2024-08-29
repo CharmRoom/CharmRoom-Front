@@ -24,7 +24,6 @@ function LoginContextProvider({ children }) {
         const accessToken = localStorage.getItem("access");
         
         if (!accessToken){
-            console.log("no access token")
             postLogoutProcess();
             return;
         }
@@ -35,7 +34,6 @@ function LoginContextProvider({ children }) {
         try {
             response = await UserApi.info();
         } catch(error){
-            console.log(`accessToken expired`);
             if (await reissue()){
                 loginCheck();
             }
@@ -52,7 +50,6 @@ function LoginContextProvider({ children }) {
             if (response.status === HttpStatusCode.Ok){
                 const accessToken = response.headers.authorization.replace("Bearer ", "");
                 localStorage.setItem("access", accessToken);
-                console.log(accessToken);
             }
         } catch(e){
             return false;
