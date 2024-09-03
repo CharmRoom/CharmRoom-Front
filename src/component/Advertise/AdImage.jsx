@@ -1,17 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const AdImage = ({ background }) => {
-    const AdImageDiv = styled.div`
-        background-image: url(${background});
+const AdImageDiv = styled.div`
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
         height: 350px;
     `;
 
+const AdImage = ({ src }) => {
     return (
-        <AdImageDiv />
+        <AdImageDiv style={ { backgroundImage: `url(${src})` } }/>
     )
 }
 

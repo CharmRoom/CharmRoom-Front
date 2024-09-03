@@ -16,7 +16,6 @@ function Advertise() {
             return;
         }
         setAds(response.data.data);
-        console.log(response.data.data);
     }
 
     useEffect(() => {
@@ -26,21 +25,16 @@ function Advertise() {
     return (
 
         <Carousel variant="dark" interval={5000} controls={false} indicators={ads && ads.length > 0}>
-
             {
-
                 ads && ads.length > 0 ?
-                
                     ads.map((ad) => {
                         return (
                             <Carousel.Item key={ad.id}>
-                                <AdImage background={SpringConstants.server + ad.image.path} />
+                                <AdImage src={SpringConstants.server + ad.image.path} />
                             </Carousel.Item>
                         )
                     })
-
                     :
-
                     <Carousel.Item>
                         <AdImage background={Logo} />
                     </Carousel.Item>
