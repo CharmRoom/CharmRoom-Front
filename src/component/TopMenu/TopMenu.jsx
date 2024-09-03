@@ -40,6 +40,7 @@ function TopMenu() {
                                 return (
                                     <Nav.Link
                                         key={board.id}
+                                        as={Link}
                                         to={`/board/${board.id}`}>
                                         {board.name}
                                     </Nav.Link>
