@@ -1,27 +1,50 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../../context/LoginContextProvider";
 
 import Logo from "../../resources/image/logo.svg"
+import BoardApi from "../../apis/BoardApi";
 
 function TopMenu() {
 
     const { isLogin, logout } = useContext(LoginContext);
-    
+    const [boards, setBoards] = useState(null);
+
+    const fetchBoards = async () => {
+        let response;
+        try {
+            response = await BoardApi.getBoardList();
+        } catch (e) {
+            return;
+        }
+        setBoards(response.data.data);
+    }
+
+    useEffect(() => {
+        fetchBoards();
+    }, [])
+
     return (
         <Navbar style={{ backgroundColor: "#CDE3FC" }} sticky="top" expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    <img src={Logo} alt="참방"/>
+                    <img src={Logo} alt="참방" />
                 </Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link>게시판1</Nav.Link>
-                        <Nav.Link>게시판2</Nav.Link>
-                        <Nav.Link>게시판3</Nav.Link>
+                        {boards &&
+                            boards.map((board) => {
+                                return (
+                                    <Nav.Link
+                                        key={board.id}
+                                        to={`/board/${board.id}`}>
+                                        {board.name}
+                                    </Nav.Link>
+                                );
+                            })}
                         <Nav.Link>동호회</Nav.Link>
                         <Nav.Link>내 동호회</Nav.Link>
                     </Nav>
