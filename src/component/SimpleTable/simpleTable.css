@@ -1,0 +1,15 @@
+.table-ellipsis {
+    table-layout: fixed;
+}
+.table-ellipsis tbody td{
+    width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table-ellipsis tbody td:hover{
+    text-overflow: clip;
+    white-space: normal;
+    word-break: break-all;
+}
