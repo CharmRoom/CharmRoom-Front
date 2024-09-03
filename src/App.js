@@ -11,19 +11,18 @@ import { Container } from "react-bootstrap";
 function App() {
 
   return (
-  
+
     <BrowserRouter>
       <LoginContextProvider>
         <TopMenu />
-        <Container>
+        <Container className="min-vh-75" >
           <Routes>
             <Route index element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
           </Routes>
-          <Footer />
         </Container>
-        
+        <Footer />
       </LoginContextProvider>
     </BrowserRouter>
 
