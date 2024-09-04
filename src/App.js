@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import LoginContextProvider from "./context/LoginContextProvider";
 import { Container } from "react-bootstrap";
+import Admin from "./pages/admin/Admin";
 function App() {
 
   return (
@@ -15,11 +16,12 @@ function App() {
     <BrowserRouter>
       <LoginContextProvider>
         <TopMenu />
-        <Container className="min-vh-75" >
+        <Container>
           <Routes>
             <Route index element={<Main />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="admin/*" element={<Admin />} />
           </Routes>
         </Container>
         <Footer />
