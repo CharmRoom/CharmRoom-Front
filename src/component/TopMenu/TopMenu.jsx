@@ -8,7 +8,7 @@ import BoardApi from "../../apis/BoardApi";
 
 function TopMenu() {
 
-    const { isLogin, logout } = useContext(LoginContext);
+    const { isLogin, userInfo, logout } = useContext(LoginContext);
     const [boards, setBoards] = useState(null);
 
     const fetchBoards = async () => {
@@ -52,6 +52,8 @@ function TopMenu() {
                     {
                         isLogin ?
                             <Nav>
+                                {userInfo && userInfo.level === 'ROLE_ADMIN' &&
+                                <Nav.Link as={Link} to={"/admin"}>관리자</Nav.Link>}
                                 <Nav.Link as={Link} to={"/mypage"}>마이페이지</Nav.Link>
                                 <Nav.Link onClick={logout}>로그아웃</Nav.Link>
                             </Nav>

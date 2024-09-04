@@ -15,7 +15,7 @@ function LoginContextProvider({ children }) {
         email: '',
         nickname: '',
         withdraw: false,
-        level: 'BASIC',
+        level: 'ROLE_BASIC',
         image: '',
     });
     const navigate = useNavigate();
