@@ -1,12 +1,10 @@
 import { HttpStatusCode } from "axios";
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setAccessToken } from "../apis/Api";
 import AuthApi from "../apis/AuthApi";
 import UserApi from "../apis/UserApi";
-
-export const LoginContext = createContext();
-LoginContext.displayName = "LoginContext";
+import LoginContext from "./LoginContext";
 
 function LoginContextProvider({ children }) {
     const [isLogin, setLogin] = useState(false);

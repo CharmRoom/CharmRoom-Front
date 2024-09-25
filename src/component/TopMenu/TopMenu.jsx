@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { LoginContext } from "../../context/LoginContextProvider";
-
 import Logo from "../../resources/image/logo.svg"
 import BoardApi from "../../apis/BoardApi";
+import LoginContext from "../../context/LoginContext"
 
 function TopMenu() {
 
