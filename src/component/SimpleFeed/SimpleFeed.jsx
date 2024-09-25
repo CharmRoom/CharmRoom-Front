@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { LoginContext } from '../../context/LoginContextProvider';
 import SimpleTable from '../SimpleTable/SimpleTable';
 import UserApi from '../../apis/UserApi';
+import LoginContext from '../../context/LoginContext';
 
 const SimpleFeed = () => {
     const { isLogin } = useContext(LoginContext);
